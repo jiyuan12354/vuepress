@@ -3,7 +3,15 @@
 @import './styles/animate.min.css'
 .home
     padding: 0
-    animation-duration:5s;
-    -webkit-animation-duration:5s; /* Safari 和 Chrome */
-    animate-delay: -10s;    //动画延迟时间
-    -webkit-animate-delay: -10s;    //动画延迟时间
+    .hero
+        padding: 0
+        animation-duration:2s;
+        -webkit-animation-duration:2s; /* Safari 和 Chrome */
+        .action-button
+            border: 1px solid #466CA1
+            border-radius: 2rem
+            color: #2c3e50
+            background-color: transparent
+            &:hover
+                color: #fff
+                background-color: #466CA1
