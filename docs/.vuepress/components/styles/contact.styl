@@ -9,6 +9,25 @@
 //     background-size: cover;
 .hidden
     display: none;
+.center
+    text-align: center;
+.topBanner
+    background: rgb(54,67,89);
+    background: -moz-linear-gradient(45deg, rgba(54,67,89,0.5) 0%, rgba(54,67,89,1) 100%), url(/muti/contact/bg_contact2.jpg) center;
+    background: -webkit-linear-gradient(45deg, rgba(54,67,89,0.5) 0%, rgba(54,67,89,1) 100%), url(/muti/contact/bg_contact2.jpg) center;
+    background: linear-gradient(45deg, rgba(54,67,89,0.5) 0%, rgba(54,67,89,1) 100%), url(/muti/contact/bg_contact2.jpg) center;
+    background-size: cover;
+    color: #ffffff;
+    height: 259px;
+    position: relative;
+    padding-top: 0;
+    padding-bottom: 30px;
+    margin: 0 auto;
+    overflow: hidden;
+    h2
+        border: none
+        margin-top: 160px;
+        margin-bottom: 30px;
 .contentWrap
     h3.title
         font-size: 26px;
@@ -84,6 +103,7 @@
                         font-size: 0.75rem;
                     .inputFull input[type=text], .inputFull textarea
                         width: 100%;
+                        margin: 20px 0;
                     input.simpleStyle
                         border: 0px;
                         outline:none;
@@ -121,6 +141,9 @@
                         color: #ffffff;
                         background-color: #2096E9;
                         border: 1px solid #3AA9C8;
+                        :disable
+                            color: #333
+                            background-color: #999
             .popup_msg_ok
                 .popupContent
                     padding: 32px 36px;
