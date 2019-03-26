@@ -30,24 +30,24 @@
             <div class="miniBlock bg white">
               <div class="descr list">
                 <ul>
-                  <li class="addressIcon">香港九龍觀塘開源道45號有利中心7樓全層</li>
+                  <li class="addressIcon">{{contact.address}}</li>
                   <li class="telIcon">
                     電話:
-                    <a href="tel:+85239526488">(852) 3952 6488</a>
+                    <a href="tel:+85239526488">{{contact.phone}}</a>
                   </li>
                   <li class="faxIcon">
                     傳真:
-                    <a href="fax:+85230169713">(852) 3016 9713</a>
+                    <a href="fax:+85230169713">{{contact.fax}}</a>
                   </li>
                   <li class="mailIcon">
-                    <a href="mailto:info@codefreesoft.com">info@codefreesoft.com</a>
+                    <a href="mailto:info@codefreesoft.com">{{contact.email}}</a>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
           <div class="gWrap2-3 gWrap-xs-1">
-            <div class="miniBlock bg white contact_msg_form" v-if="!data.showMessage" key="1">
+            <div class="miniBlock bg white contact_msg_form" v-if="!showMessage" key="1">
               <h3 class="title">请告诉我们您需要解决的问题</h3>
               <form @submit.prevent="showData">
                 <div class="miniiSet">
@@ -56,12 +56,7 @@
                     <span class="validMsg red validMsg_email">*</span>
                   </label>
                   <div class="inputWrap inputFull">
-                    <input
-                      type="text"
-                      id="msg_name"
-                      class="simpleStyle"
-                      v-model="data.formObj.name"
-                    >
+                    <input type="text" id="msg_name" class="simpleStyle" v-model="formObj.name">
                   </div>
                 </div>
                 <div class="miniiSet">
@@ -74,11 +69,11 @@
                       type="text"
                       id="msg_email"
                       class="simpleStyle"
-                      v-model="data.formObj.email"
-                      @change="validateEmail(data.formObj.email)"
+                      v-model="formObj.email"
+                      @change="validateEmail(formObj.email)"
                     >
                   </div>
-                  <div class="error" v-if="data.emailInValid">请输入正确的邮箱地址</div>
+                  <div class="error" v-if="emailInValid">请输入正确的邮箱地址</div>
                 </div>
                 <div class="miniiSet">
                   <label for="msg_tel">聯絡電話 (可選填)</label>
@@ -87,7 +82,7 @@
                       type="text"
                       id="msg_tel"
                       class="simpleStyle onlyPhone"
-                      v-model="data.formObj.phone"
+                      v-model="formObj.phone"
                     >
                   </div>
                 </div>
@@ -97,13 +92,17 @@
                     <span class="validMsg red validMsg_email">*</span>
                   </label>
                   <div class="inputWrap inputFull">
-                    <textarea id="msg_msg" class="simpleStyle" v-model="data.formObj.requirement"></textarea>
+                    <textarea id="msg_msg" class="simpleStyle" v-model="formObj.requirement"></textarea>
                   </div>
                 </div>
 
                 <div class="footerBar">
-                  <!--  :disabled="!data.emailInValid" -->
-                  <input class="cmnBtn blueStyle popBtn_send" type="submit" value="發送">
+                  <input
+                    class="cmnBtn blueStyle popBtn_send"
+                    type="submit"
+                    value="發送"
+                    v-bind:disabled="formInValid"
+                  >
                 </div>
               </form>
             </div>
@@ -142,56 +141,80 @@
 <!-- <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script> -->
 <script>
 var emailjs = require("emailjs-com");
+const debounce = (function() {
+  let timer = 0;
+  return function(func, delay) {
+    clearTimeout(timer);
+    timer = setTimeout(func, delay);
+  };
+})();
 export default {
+  data() {
+    return {
+      formObj: {
+        name: "",
+        email: "",
+        requirement: ""
+      },
+      showMessage: false,
+      emailInValid: false,
+      formInValid: true
+    };
+  },
   computed: {
-    data() {
+    contact() {
       return {
-        ...this.$page.frontmatter,
-        formObj: {
-          name: "",
-          email: "",
-          requirement: ""
-        },
-        showMessage: false,
-        emailInValid: false
+        ...this.$page.frontmatter
       };
     }
   },
+  watch: {
+    email() {
+      debounce(() => {
+        this.validateEmail();
+      }, 200);
+    },
+    formObj: {
+      //深度监听，可监听到对象、数组的变化
+      handler(val, oldVal) {
+        this.validateEmail();
+      },
+      deep: true
+    }
+  },
   methods: {
-    validateEmail(email) {
+    validateEmail() {
       if (
-        email &&
-        email.match(
-          "^[a-z]([a-z0-9]*[-_]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[.][a-z]{2,3}([.][a-z]{2})?$"
+        this.formObj.email &&
+        this.formObj.email.match(
+          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         )
       ) {
-        this.data.emailInValid = false;
+        this.emailInValid = false;
+        this.formInValid = false;
       } else {
-        this.data.emailInValid = true;
+        this.emailInValid = true;
+        this.formInValid = true;
       }
     },
     showData(e) {
       console.log(e);
-      console.log(this.data.formObj);
+      console.log(this.formObj);
       var templateParams = {
         reply_to: "jiyuan12354@163.com",
         message_html:
           "来自[" +
-          this.data.formObj.name +
+          this.formObj.name +
           "]的消息：<br />" +
-          this.data.formObj.requirement +
+          this.formObj.requirement +
           "<br />" +
           "邮件:" +
-          this.data.formObj.email +
+          this.formObj.email +
           "<br />" +
           "电话:" +
-          this.data.formObj.phone
+          this.formObj.phone
       };
-      if (
-        this.data.formObj.name &&
-        this.data.formObj.requirement &&
-        this.data.formObj.email
-      ) {
+      if (this.formObj.name && this.formObj.requirement && this.formObj.email) {
         var that = this;
         emailjs
           .send(
@@ -202,8 +225,7 @@ export default {
           )
           .then(
             function(response) {
-              that.data.showMessage = true;
-              that.$forceUpdate();
+              that.showMessage = true;
             },
             function(error) {
               alert("发送失败,请检查网络后重试!");
