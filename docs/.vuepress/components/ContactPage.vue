@@ -1,24 +1,4 @@
 <template>
-  <!-- <div class="contact">
-        联系我们
-        <form @submit.prevent="showData">
-            <div>
-                <label for="name">您的名称</label>
-                <input type="text" id="name" v-model="data.formObj.name">
-            </div>
-            <div>
-                <label for="email">您的邮箱</label>
-                <input type="text" id="email" v-model="data.formObj.email">
-            </div>
-            <div>
-                <label for="requirement">您需要我们为您做什么</label>
-                <input type="text" id="requirement" v-model="data.formObj.requirement">
-            </div>
-            <div>
-                <input type="submit" value="提交" />
-            </div>
-        </form>
-  </div>-->
   <div class="bodyWrap">
     <div class="topBanner">
       <h2 class="center mb0">聯絡我們</h2>
@@ -121,7 +101,6 @@
   </div>
 </template>
 
-<!-- <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script> -->
 <script>
   var emailjs = require("emailjs-com");
   const debounce = (function () {
@@ -152,11 +131,11 @@
       }
     },
     watch: {
-      email() {
-        debounce(() => {
-          this.validateEmail();
-        }, 200);
-      },
+      // email() {
+      //   debounce(() => {
+      //     this.validateEmail();
+      //   }, 200);
+      // },
       formObj: {
         //深度监听，可监听到对象、数组的变化
         handler(val, oldVal) {

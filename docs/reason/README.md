@@ -1,1 +1,4 @@
-# 为何选择我们
+---
+layout: WhyUsPage
+footer: MIT Licensed | Copyright © 2019-present MT
+---

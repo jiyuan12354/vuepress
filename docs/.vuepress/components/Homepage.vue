@@ -16,7 +16,7 @@
             </p>
             <p class="action"><a href="/muti/guide/" class="nav-link action-button">{{ data.actionText }}</a></p>
         </div>
-        <div class="features">
+        <div class="features animated fadeIn">
             <div class="feature fadeIn" v-for="item in data.features">
                 <h2>{{ item.title }}</h2>
                 <p>{{ item.details }}</p>
