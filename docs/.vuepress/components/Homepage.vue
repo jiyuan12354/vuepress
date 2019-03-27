@@ -1,12 +1,6 @@
 <template>
     <div class="home">
-        <VueCarousel
-            :imgs="data.banner"
-            :delay="2000"
-            :imgWidth="960"
-            :imgHeight="606"
-            :dotWidth="10"
-        />
+        <VueCarousel :imgs="data.banner" :delay="2000" :imgWidth="960" :imgHeight="606" :dotWidth="10" />
         <div class="hero animated fadeIn">
             <img :src="$withBase(data.heroImage)" alt="hero">
             <div id='intro'>
@@ -23,7 +17,7 @@
             <p class="action"><a href="/muti/guide/" class="nav-link action-button">{{ data.actionText }}</a></p>
         </div>
         <div class="features">
-            <div class="feature" v-for="item in data.features">
+            <div class="feature fadeIn" v-for="item in data.features">
                 <h2>{{ item.title }}</h2>
                 <p>{{ item.details }}</p>
             </div>
@@ -38,24 +32,38 @@
 <script>
     // import { swiper, swiperSlide } from "vue-awesome-swiper";
     // import 'swiper/dist/css/swiper.css';
-    import '../rem.js';
+    // import '../rem.js';
     import VueCarousel from './VueCarousel.vue'
     export default {
         components: {
             VueCarousel
         },
         computed: {
+            background() {
+                return this.$site.themeConfig.homeBackgroundUrl
+            },
             data() {
                 return {
                     ...this.$page.frontmatter,
                     banner: [
-                        {src: '/muti/banner/d_index_content_bg1.jpg'},
-                        {src: '/muti/banner/d_index_content_bg2.jpg'},
-                        {src: '/muti/banner/technology1.jpg'},
+                        { src: '/muti/banner/d_index_content_bg1.jpg' },
+                        { src: '/muti/banner/d_index_content_bg2.jpg' },
+                        { src: '/muti/banner/technology1.jpg' },
                     ]
                 };
             },
-        }
+            homeStyle() {
+                return {
+                    'background-size': 'cover',
+                    'background-repeat': 'no-repeat',
+                    'background-position': 'center',
+                    'background-attachment': 'scroll',
+                    'background-image': `url(${this.background})`,
+                }
+            },
+        },
+        methods: {
+        },
     };
 </script>
 

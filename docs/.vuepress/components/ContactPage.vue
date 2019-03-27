@@ -65,25 +65,15 @@
                     <span class="validMsg red validMsg_email">*</span>
                   </label>
                   <div class="inputWrap inputFull">
-                    <input
-                      type="text"
-                      id="msg_email"
-                      class="simpleStyle"
-                      v-model="formObj.email"
-                      @change="validateEmail(formObj.email)"
-                    >
+                    <input type="text" id="msg_email" class="simpleStyle" v-model="formObj.email"
+                      @change="validateEmail(formObj.email)">
                   </div>
                   <div class="error" v-if="emailInValid">请输入正确的邮箱地址</div>
                 </div>
                 <div class="miniiSet">
                   <label for="msg_tel">聯絡電話 (可選填)</label>
                   <div class="inputWrap inputFull">
-                    <input
-                      type="text"
-                      id="msg_tel"
-                      class="simpleStyle onlyPhone"
-                      v-model="formObj.phone"
-                    >
+                    <input type="text" id="msg_tel" class="simpleStyle onlyPhone" v-model="formObj.phone">
                   </div>
                 </div>
                 <div class="miniiSet">
@@ -97,12 +87,7 @@
                 </div>
 
                 <div class="footerBar">
-                  <input
-                    class="cmnBtn blueStyle popBtn_send"
-                    type="submit"
-                    value="發送"
-                    v-bind:disabled="formInValid"
-                  >
+                  <input class="cmnBtn blueStyle popBtn_send" type="submit" value="發送" v-bind:disabled="formInValid">
                 </div>
               </form>
             </div>
@@ -121,9 +106,7 @@
                       <br>
                       <br>如果就我們的服務有任何疑問，
                       <br>請電(852) 3952 6488 或發送電郵給我們
-                      <a
-                        href="mailto:info@codefreesoft.com"
-                      >info@codefreesoft.com</a>。
+                      <a href="mailto:info@codefreesoft.com">info@codefreesoft.com</a>。
                       <br>
                       <br>謝謝
                     </div>
@@ -140,104 +123,104 @@
 
 <!-- <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script> -->
 <script>
-var emailjs = require("emailjs-com");
-const debounce = (function() {
-  let timer = 0;
-  return function(func, delay) {
-    clearTimeout(timer);
-    timer = setTimeout(func, delay);
-  };
-})();
-export default {
-  data() {
-    return {
-      formObj: {
-        name: "",
-        email: "",
-        requirement: ""
-      },
-      showMessage: false,
-      emailInValid: false,
-      formInValid: true
+  var emailjs = require("emailjs-com");
+  const debounce = (function () {
+    let timer = 0;
+    return function (func, delay) {
+      clearTimeout(timer);
+      timer = setTimeout(func, delay);
     };
-  },
-  computed: {
-    contact() {
+  })();
+  export default {
+    data() {
       return {
-        ...this.$page.frontmatter
+        formObj: {
+          name: "",
+          email: "",
+          requirement: ""
+        },
+        showMessage: false,
+        emailInValid: false,
+        formInValid: true,
       };
-    }
-  },
-  watch: {
-    email() {
-      debounce(() => {
-        this.validateEmail();
-      }, 200);
     },
-    formObj: {
-      //深度监听，可监听到对象、数组的变化
-      handler(val, oldVal) {
-        this.validateEmail();
+    computed: {
+      contact() {
+        return {
+          ...this.$page.frontmatter
+        };
+      }
+    },
+    watch: {
+      email() {
+        debounce(() => {
+          this.validateEmail();
+        }, 200);
       },
-      deep: true
-    }
-  },
-  methods: {
-    validateEmail() {
-      if (
-        this.formObj.email &&
-        this.formObj.email.match(
-          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        )
-      ) {
-        this.emailInValid = false;
-        this.formInValid = false;
-      } else {
-        this.emailInValid = true;
-        this.formInValid = true;
+      formObj: {
+        //深度监听，可监听到对象、数组的变化
+        handler(val, oldVal) {
+          this.validateEmail();
+        },
+        deep: true
       }
     },
-    showData(e) {
-      console.log(e);
-      console.log(this.formObj);
-      var templateParams = {
-        reply_to: "jiyuan12354@163.com",
-        message_html:
-          "来自[" +
-          this.formObj.name +
-          "]的消息：<br />" +
-          this.formObj.requirement +
-          "<br />" +
-          "邮件:" +
-          this.formObj.email +
-          "<br />" +
-          "电话:" +
-          this.formObj.phone
-      };
-      if (this.formObj.name && this.formObj.requirement && this.formObj.email) {
-        var that = this;
-        emailjs
-          .send(
-            "dengjyqq_smtp_server",
-            "muti",
-            templateParams,
-            "user_58xuBLVRAeK86bIgt56Xy"
+    methods: {
+      validateEmail() {
+        if (
+          this.formObj.email &&
+          this.formObj.email.match(
+            /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
           )
-          .then(
-            function(response) {
-              that.showMessage = true;
-            },
-            function(error) {
-              alert("发送失败,请检查网络后重试!");
-            }
-          );
+        ) {
+          this.emailInValid = false;
+          this.formInValid = false;
+        } else {
+          this.emailInValid = true;
+          this.formInValid = true;
+        }
+      },
+      showData(e) {
+        console.log(e);
+        console.log(this.formObj);
+        var templateParams = {
+          reply_to: "jiyuan12354@163.com",
+          message_html:
+            "来自[" +
+            this.formObj.name +
+            "]的消息：<br />" +
+            this.formObj.requirement +
+            "<br />" +
+            "邮件:" +
+            this.formObj.email +
+            "<br />" +
+            "电话:" +
+            this.formObj.phone
+        };
+        if (this.formObj.name && this.formObj.requirement && this.formObj.email) {
+          var that = this;
+          emailjs
+            .send(
+              "dengjyqq_smtp_server",
+              "muti",
+              templateParams,
+              "user_58xuBLVRAeK86bIgt56Xy"
+            )
+            .then(
+              function (response) {
+                that.showMessage = true;
+              },
+              function (error) {
+                alert("发送失败,请检查网络后重试!");
+              }
+            );
+        }
       }
     }
-  }
-};
+  };
 </script>
 
 <style lang="stylus">
-@import './styles/config.styl';
-@import './styles/contact.styl';
+  @import './styles/config.styl';
+  @import './styles/contact.styl';
 </style>

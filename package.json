@@ -16,23 +16,12 @@
     "gh-pages": "^2.0.1",
     "vue-awesome-swiper": "^3.1.3",
     "vuepress": "^0.14.10",
-    "webpack-dev-middleware": "^3.6.0",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-register": "^6.18.0"
-  },
-  "babel": {
-    "presets": [
-      "es2015"
-    ],
-    "sourceMaps": true,
-    "retainLines": true
+    "webpack-dev-middleware": "^3.6.0"
   },
   "dependencies": {
-    "emailjs": "^2.2.0",
     "emailjs-com": "^2.3.2",
     "markdown-it": "^8.4.1",
     "markdown-it-emoji": "^1.4.0",
-    "markdown-it-katex": "^2.0.3",
-    "nodemailer": "^5.1.1"
+    "markdown-it-katex": "^2.0.3"
   }
 }
