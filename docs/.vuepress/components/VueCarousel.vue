@@ -1,10 +1,10 @@
 <template>
     <div class="vuecarousel">
         <div class="contain" @mouseenter="stop" @mouseleave="start"
-            :style="{width: imgWidth + 'px', height: imgHeight + 'px'}">
+            :style="{height: imgHeight + 'px'}" style="width: 100%">
             <ul class="ul">
                 <li class="items" v-for="(img, index) in imgs" :key="index" v-show="index == showIndex">
-                    <div :style="{width: imgWidth + 'px', height: imgHeight + 'px', background: 'url(' + img.src + ')'}">
+                    <div :style="{height: imgHeight + 'px', background: 'url(' + img.src + ') center 0px no-repeat'}" style="width: 100%">
 
                     </div>
                 </li>

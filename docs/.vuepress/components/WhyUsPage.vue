@@ -1,9 +1,17 @@
 <template>
     <div class="whyUs">
         <div class="features animated fadeIn">
-            <div class="feature fadeIn" v-for="item in data.features">
-                <h2>{{ item.title }}</h2>
-                <p>{{ item.details }}</p>
+            <div class="feature fadeIn" v-for="(item, index) in data.features">
+                <div>
+                    <h2>
+                        <span class="index">0{{ index + 1 }}/</span>
+                        {{ item.title }}
+                    </h2>
+                    <p v-for="p in item.details">{{ p }}</p>
+                </div>
+                <div>
+                    <img :src="$withBase(item.icon)" alt="">
+                </div>
             </div>
         </div>
     </div>
@@ -16,8 +24,11 @@
             };
         },
         computed: {
-            xxxx() {
-            }
+            data() {
+                return {
+                    ...this.$page.frontmatter,
+                };
+            },
         },
         watch: {
         },
@@ -28,5 +39,5 @@
 
 <style lang="stylus">
     @import './styles/config.styl';
-    @import './styles/contact.styl';
+    @import './styles/reason.styl';
 </style>

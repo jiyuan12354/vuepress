@@ -1,6 +1,6 @@
 <template>
     <div class="home">
-        <VueCarousel :imgs="data.banner" :delay="2000" :imgWidth="960" :imgHeight="606" :dotWidth="10" />
+        <VueCarousel :imgs="data.banner" :delay="2000" :imgWidth="960" :imgHeight="450" :dotWidth="10" />
         <div class="hero animated fadeIn">
             <img :src="$withBase(data.heroImage)" alt="hero">
             <div id='intro'>
@@ -46,9 +46,8 @@
                 return {
                     ...this.$page.frontmatter,
                     banner: [
-                        { src: '/muti/banner/d_index_content_bg1.jpg' },
-                        { src: '/muti/banner/d_index_content_bg2.jpg' },
-                        { src: '/muti/banner/technology1.jpg' },
+                        { src: '/muti/banner/banner1.jpg' },
+                        { src: '/muti/banner/banner2.jpg' },
                     ]
                 };
             },
