@@ -13,7 +13,6 @@ module.exports = {
   ],
   themeConfig: {
     // navbar: false,
-    homeBackgroundUrl: '/homeBackground.jpg',
     locales: {
       '/en/': {
         label: 'English',

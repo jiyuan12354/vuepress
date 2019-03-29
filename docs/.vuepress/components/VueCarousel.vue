@@ -1,107 +1,131 @@
 <template>
-    <div class="vuecarousel">
-        <div class="contain" @mouseenter="stop" @mouseleave="start"
-            :style="{height: imgHeight + 'px'}" style="width: 100%">
-            <ul class="ul">
-                <li class="items" v-for="(img, index) in imgs" :key="index" v-show="index == showIndex">
-                    <div :style="{height: imgHeight + 'px', background: 'url(' + img.src + ') center 0px no-repeat'}" style="width: 100%">
-
-                    </div>
-                </li>
-            </ul>
-            <ul class="dots" :style="{width: imgs.length * (dotWidth + 10) + 'px',  height: dotWidth + 'px'}">
-                <li v-for="(img, index) in imgs" :key="index" :class="index == showIndex ? 'active' : ''"
-                    @click="showIndex = index" :style="{width: dotWidth + 'px', height: dotWidth + 'px'}">
-                </li>
-            </ul>
-            <div class="control" v-show="show">
-                <span class="left" @click="previous">
-                    <img src="https://img.icons8.com/ios-glyphs/30/eeeeee/chevron-left.png">
-                </span>
-                <span class="right" @click="next">
-                    <img src="https://img.icons8.com/ios-glyphs/30/eeeeee/chevron-right.png">
-                </span>
-            </div>
-        </div>
+  <div class="vuecarousel">
+    <div
+      class="contain"
+      @mouseenter="stop"
+      @mouseleave="start"
+      :style="{height: imgHeight + 'px'}"
+      style="width: 100%"
+    >
+      <ul class="ul">
+        <li class="items" v-for="(img, index) in imgs" :key="index" v-show="index == showIndex">
+          <!-- <div
+            :style="{height: imgHeight + 'px', background: 'url(' + img.src + ') center 0px no-repeat'}"
+            style="width: 100%"
+          ></div> -->
+          <lazy-background
+            :image-source="img.src"
+            loading-image="/muti/svg/loading.svg"
+            error-image="/muti/icons/presentation.png"
+            image-class="cam-viewport"
+            background-size="cover">
+          </lazy-background>
+        </li>
+      </ul>
+      <ul
+        class="dots"
+        :style="{width: imgs.length * (dotWidth + 10) + 'px',  height: dotWidth + 'px'}"
+      >
+        <li
+          v-for="(img, index) in imgs"
+          :key="index"
+          :class="index == showIndex ? 'active' : ''"
+          @click="showIndex = index"
+          :style="{width: dotWidth + 'px', height: dotWidth + 'px'}"
+        ></li>
+      </ul>
+      <div class="control" v-show="show">
+        <span class="left" @click="previous">
+          <img src="https://img.icons8.com/ios-glyphs/30/eeeeee/chevron-left.png">
+        </span>
+        <span class="right" @click="next">
+          <img src="https://img.icons8.com/ios-glyphs/30/eeeeee/chevron-right.png">
+        </span>
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        created() {
-            this.timer = setInterval(() => {
-                this.next();
-            }, this.delay)
-        },
-        beforeDestroy() {
-            clearInterval(this.timer);
-        },
-        props: {
-            imgs: {
-                type: Array,
-                required: true
-            },
-            delay: {
-                type: Number,
-                default: function () {
-                    return 2000;
-                }
-            },
-            imgWidth: {
-                default: function () {
-                    return 400;
-                }
-            },
-            imgHeight: {
-                default: function () {
-                    return 302;
-                }
-            },
-            dotWidth: {
-                default: function () {
-                    return 20;
-                }
-            }
-        },
-        data() {
-            return {
-                showIndex: 0, //显示第几个图片
-                timer: null,  // 定时器
-                show: false   // 前后按钮显示
-            }
-        },
-        methods: {
-            previous() {
-                if (this.showIndex <= 0) {
-                    this.showIndex = this.imgs.length - 1;
-                } else {
-                    this.showIndex--;
-                }
-            },
-            next() {
-                if (this.showIndex >= this.imgs.length - 1) {
-                    this.showIndex = 0;
-                } else {
-                    this.showIndex++;
-                }
-            },
-            start() {
-                this.show = false;
-                clearInterval(this.timer);
-                this.timer = setInterval(() => {
-                    this.next();
-                }, this.delay)
-            },
-            stop() {
-                this.show = true;
-                clearInterval(this.timer);
-            }
-        }
+import VueLazyBackgroundImage from 'vue-lazy-background-images/VueLazyBackgroundImage'
+export default {
+  components: {
+    "lazy-background": VueLazyBackgroundImage
+  },
+  created() {
+    this.timer = setInterval(() => {
+      this.next();
+    }, this.delay);
+  },
+  beforeDestroy() {
+    clearInterval(this.timer);
+  },
+  props: {
+    imgs: {
+      type: Array,
+      required: true
+    },
+    delay: {
+      type: Number,
+      default: function() {
+        return 2000;
+      }
+    },
+    imgWidth: {
+      default: function() {
+        return 400;
+      }
+    },
+    imgHeight: {
+      default: function() {
+        return 302;
+      }
+    },
+    dotWidth: {
+      default: function() {
+        return 20;
+      }
     }
+  },
+  data() {
+    return {
+      showIndex: 0, //显示第几个图片
+      timer: null, // 定时器
+      show: false // 前后按钮显示
+    };
+  },
+  methods: {
+    previous() {
+      if (this.showIndex <= 0) {
+        this.showIndex = this.imgs.length - 1;
+      } else {
+        this.showIndex--;
+      }
+    },
+    next() {
+      if (this.showIndex >= this.imgs.length - 1) {
+        this.showIndex = 0;
+      } else {
+        this.showIndex++;
+      }
+    },
+    start() {
+      this.show = false;
+      clearInterval(this.timer);
+      this.timer = setInterval(() => {
+        this.next();
+      }, this.delay);
+    },
+    stop() {
+      this.show = true;
+      clearInterval(this.timer);
+    }
+  }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
 <style lang="stylus" scoped>
-    @import './styles/carousel.styl'
+@import './styles/carousel.styl';
 </style>

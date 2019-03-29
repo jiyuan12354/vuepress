@@ -30,13 +30,10 @@
 </template>
 
 <script>
-    // import { swiper, swiperSlide } from "vue-awesome-swiper";
-    // import 'swiper/dist/css/swiper.css';
-    // import '../rem.js';
     import VueCarousel from './VueCarousel.vue'
     export default {
         components: {
-            VueCarousel
+            VueCarousel,
         },
         computed: {
             background() {
@@ -50,15 +47,6 @@
                         { src: '/muti/banner/banner2.jpg' },
                     ]
                 };
-            },
-            homeStyle() {
-                return {
-                    'background-size': 'cover',
-                    'background-repeat': 'no-repeat',
-                    'background-position': 'center',
-                    'background-attachment': 'scroll',
-                    'background-image': `url(${this.background})`,
-                }
             },
         },
         methods: {
