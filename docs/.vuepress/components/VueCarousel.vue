@@ -13,13 +13,15 @@
             :style="{height: imgHeight + 'px', background: 'url(' + img.src + ') center 0px no-repeat'}"
             style="width: 100%"
           ></div> -->
-          <lazy-background
-            :image-source="img.src"
-            loading-image="/muti/svg/loading.svg"
-            error-image="/muti/icons/presentation.png"
-            image-class="cam-viewport"
-            background-size="cover">
-          </lazy-background>
+          <ClientOnly>
+            <VueLazyBackgroundImage
+              :image-source="img.src"
+              loading-image="http://temp.im/1920x430/4ca6f4/fff"
+              error-image="/muti/icons/presentation.png"
+              image-class="cam-viewport"
+              background-size="cover">
+            </VueLazyBackgroundImage>
+          </ClientOnly>
         </li>
       </ul>
       <ul
@@ -47,10 +49,10 @@
 </template>
 
 <script>
-import VueLazyBackgroundImage from 'vue-lazy-background-images/VueLazyBackgroundImage'
+import VueLazyBackgroundImage from './VueLazyBackgroundImage'
 export default {
   components: {
-    "lazy-background": VueLazyBackgroundImage
+    VueLazyBackgroundImage
   },
   created() {
     this.timer = setInterval(() => {

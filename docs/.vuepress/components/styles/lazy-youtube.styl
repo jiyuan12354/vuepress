@@ -1,0 +1,38 @@
+.y-video
+    background-color: #000;
+    cursor: pointer;
+    &__inner
+        position: relative;
+    &__embed,
+    &__media
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-width: 0;
+    &__button
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-width: 0;
+        background-color: transparent;
+        width: 68px;
+        height: 48px;
+        padding: 0;
+        cursor: pointer;
+        &-shape
+            fill: #212121;
+            fill-opacity: 0.8;
+        &-icon
+            fill: #fff;
+        &:focus
+            outline: 0;
+            .y-video__button-shape
+                fill: red;
+                fill-opacity: 1;
+    &:hover
+        .y-video__button-shape
+            fill: red;
+            fill-opacity: 1;

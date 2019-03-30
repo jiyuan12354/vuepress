@@ -2,14 +2,14 @@
     <div class="whyUs">
         <div class="features animated fadeIn">
             <div class="feature fadeIn" v-for="(item, index) in data.features">
-                <div>
+                <div class="title">
                     <h2>
                         <span class="index">0{{ index + 1 }}/</span>
                         {{ item.title }}
                     </h2>
                     <p v-for="p in item.details">{{ p }}</p>
                 </div>
-                <div>
+                <div class="icon">
                     <img :src="$withBase(item.icon)" alt="">
                 </div>
             </div>

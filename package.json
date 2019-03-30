@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vuepress dev docs -p 8081",
     "build": "vuepress build docs",
-    "build-deploy": "vuepress build docs && gh-pages -d docs/.vuepress/dist",
+    "build-deploy": "npm run build && npm run deploy",
     "deploy": "gh-pages -d docs/.vuepress/dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,8 +14,6 @@
   "license": "ISC",
   "devDependencies": {
     "gh-pages": "^2.0.1",
-    "vue-awesome-swiper": "^3.1.3",
-    "vue-lazy-background-images": "^1.0.0",
     "vuepress": "^0.14.10",
     "webpack-dev-middleware": "^3.6.0"
   },
@@ -23,6 +21,8 @@
     "emailjs-com": "^2.3.2",
     "markdown-it": "^8.4.1",
     "markdown-it-emoji": "^1.4.0",
-    "markdown-it-katex": "^2.0.3"
+    "markdown-it-katex": "^2.0.3",
+    "vue-lazy-youtube-video": "^1.0.3",
+    "webpack-serve": "^3.0.0-beta.3"
   }
 }

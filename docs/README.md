@@ -1,5 +1,5 @@
 ---
-layout: Homepage
+layout: HomePage
 siteTitle: 母体科技
 heroImage: /home.jpg
 actionText: 开启一站式服务 →
