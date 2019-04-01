@@ -1,7 +1,7 @@
 module.exports = {
   title: '母体科技',
   description: '帮你做你想做的事',
-  base: '/muti/',
+  base: '/',
   head: [
     [
       'link',

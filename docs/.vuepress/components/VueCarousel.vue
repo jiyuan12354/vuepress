@@ -17,7 +17,7 @@
             <VueLazyBackgroundImage
               :image-source="img.src"
               loading-image="http://temp.im/1920x430/4ca6f4/fff"
-              error-image="/muti/icons/presentation.png"
+              error-image="/icons/presentation.png"
               image-class="cam-viewport"
               background-size="cover">
             </VueLazyBackgroundImage>

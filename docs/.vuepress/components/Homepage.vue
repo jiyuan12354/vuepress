@@ -9,7 +9,7 @@
                 <img :src="$withBase(data.heroImage)" alt="hero">
                 <div id='intro'>
                     <p>与我们</p>
-                    <!-- <img src="/muti/banner/d_index_content_bg1.jpg" alt=""> -->
+                    <!-- <img src="/banner/d_index_content_bg1.jpg" alt=""> -->
                     <p>一起创建您的移动应用程序</p>
                     <p>我们设计和开发了多款应用产品，包括网站，小程序，手机app</p>
                     <p>我们构思和创建成功软件的基础就是以用户为中心的互动设计和体验</p>
@@ -18,7 +18,7 @@
                 <p class="description">
                     {{ data.description }}
                 </p>
-                <p class="action"><a href="/muti/guide/" class="nav-link action-button">{{ data.actionText }}</a></p>
+                <p class="action"><a href="/guide/" class="nav-link action-button">{{ data.actionText }}</a></p>
             </div>
             <div class="features animated fadeIn">
                 <div class="feature fadeIn" v-for="item in data.features" :key="item.title">
@@ -48,8 +48,8 @@
                 return {
                     ...this.$page.frontmatter,
                     banner: [
-                        { src: '/muti/banner/banner1.jpg' },
-                        { src: '/muti/banner/banner2.jpg' },
+                        { src: '/banner/banner1.jpg' },
+                        { src: '/banner/banner2.jpg' },
                     ]
                 };
             },
