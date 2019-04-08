@@ -13,6 +13,7 @@ module.exports = {
   ],
   themeConfig: {
     // navbar: false,
+    sidebarDepth: 3,
     locales: {
       '/en/': {
         label: 'English',

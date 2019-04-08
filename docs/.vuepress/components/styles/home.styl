@@ -44,28 +44,46 @@
                     background-color: #446BA3;
     .intro
         h2
-            background: rgb(54,67,89);
-            background: url(/icons/tvp_header_nocontent.png) center no-repeat;
-            background: url(/icons/tvp_header_nocontent.png) center no-repeat;
-            background: url(/icons/tvp_header_nocontent.png) center no-repeat;
-            background-size: cover;
-            color: white;
-            text-align: center;
-            width: 720px;
-            height: 160px;
+            border: 1px solid #ddd;
+            height: 100px;
+            // background: gray;
+            // background: url(/icons/tvp_header_nocontent.png) center no-repeat;
+            // background: url(/icons/tvp_header_nocontent.png) center no-repeat;
+            // background: url(/icons/tvp_header_nocontent.png) center no-repeat;
+            // background-size: cover;
+            // color: white;
+            // text-align: center;
+            // width: 720px;
+            // height: 160px;
             &:after
                 content: '';
                 display: inline-block;
                 vertical-align: middle;
-                height: 75%;
-        .cost
-            filter: sepia(20%);
+                height: 100%;
+            &:before
+                content: '\2726';
+                margin: 0 1rem;
+                color: #06B995;
+        // .cost
+        //     filter: sepia(20%);
         li
-            margin: 1rem 0;
             list-style: none;
-            img
-                width: 30px;
-                height: auto;
-            // &:before
-            //     content: ''
-            //     background-image: url(/svg/li_style.svg)
+        >ul>li
+            margin: 1rem 0;
+            // img
+            //     width: 30px;
+            //     height: auto;
+            &:before
+                content: '\2611'
+                margin: 0 1rem;
+                color: #06B995;
+        .assess-cost
+            padding: 0 2rem;
+            li
+                margin: 1rem 0;
+                h5
+                    &:before
+                        content: '\2657'
+                        margin: 0 1rem;
+                        color: #06B995;
+
