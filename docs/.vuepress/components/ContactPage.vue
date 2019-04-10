@@ -28,7 +28,7 @@
           </div>
           <div class="gWrap2-3 gWrap-xs-1">
             <div class="miniBlock bg white contact_msg_form" v-if="!showMessage" key="1">
-              <h3 class="title">请告诉我们您需要解决的问题</h3>
+              <h3 class="title">請告訴我們您需要解決的問題</h3>
               <form @submit.prevent="showData">
                 <div class="miniiSet">
                   <label for="msg_name">
@@ -48,7 +48,7 @@
                     <input type="text" id="msg_email" class="simpleStyle" v-model="formObj.email"
                       @change="validateEmail(formObj.email)">
                   </div>
-                  <div class="error" v-if="emailInValid">请输入正确的邮箱地址</div>
+                  <div class="error" v-if="emailInValid">請輸入正確的郵箱地址</div>
                 </div>
                 <div class="miniiSet">
                   <label for="msg_tel">聯絡電話 (可選填)</label>
@@ -58,7 +58,7 @@
                 </div>
                 <div class="miniiSet">
                   <label for="msg_msg">
-                    你的訊息
+                    妳的訊息
                     <span class="validMsg red validMsg_email">*</span>
                   </label>
                   <div class="inputWrap inputFull">
@@ -82,7 +82,7 @@
                       <div class="title bottomBorder">謝謝</div>
                     </div>
                     <div class="message_content">
-                      你的訊息已在處理中。
+                      妳的訊息已在處理中。
                       <br>
                       <br>如果就我們的服務有任何疑問，
                       <br>請電(852) 3952 6488 或發送電郵給我們
@@ -137,7 +137,7 @@
       //   }, 200);
       // },
       formObj: {
-        //深度监听，可监听到对象、数组的变化
+        //深度監聽，可監聽到對象、數組的變化
         handler(val, oldVal) {
           this.validateEmail();
         },
@@ -165,15 +165,15 @@
         var templateParams = {
           reply_to: "jiyuan12354@163.com",
           message_html:
-            "来自[" +
+            "來自[" +
             this.formObj.name +
             "]的消息：<br />" +
             this.formObj.requirement +
             "<br />" +
-            "邮件:" +
+            "郵件:" +
             this.formObj.email +
             "<br />" +
-            "电话:" +
+            "電話:" +
             this.formObj.phone
         };
         if (this.formObj.name && this.formObj.requirement && this.formObj.email) {
@@ -190,7 +190,7 @@
                 that.showMessage = true;
               },
               function (error) {
-                alert("发送失败,请检查网络后重试!");
+                alert("發送失敗,請檢查網絡後重試!");
               }
             );
         }

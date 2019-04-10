@@ -1,6 +1,6 @@
 module.exports = {
-  title: '母体科技',
-  description: '帮你做你想做的事',
+  title: '母體科技',
+  description: '幫妳做您想做的事',
   base: '/',
   head: [
     [
@@ -26,22 +26,35 @@ module.exports = {
         ],
       },
       '/': {
-        label: '简体中文',
-        selectText: '选择语言',
+        label: '繁體中文',
+        selectText: '選擇語言',
         nav: [
-          { text: '主页', link: '/' },
-          { text: '行业', link: '/hangye/' },
-          { text: '为何选择我们', link: '/reason/' },
-          { text: '联系我们', link: '/request-a-quote/' },
+          { text: '主頁', link: '/' },
+          { text: '行業', link: '/hangye/' },
+          { text: '為何選擇我們', link: '/reason/' },
+          { text: '聯系我們', link: '/request-a-quote/' },
         ],
+
+        sidebar: {
+          '/hangye/': [
+            {
+              title: '解決方案',
+              collapsable: false,
+              children: [
+                '/hangye/transport.md',
+                '/hangye/community.md'
+              ]
+            },
+          ],
+        }
       }
     },
   },
   locales: {
     '/': {
       lang: 'zh-CN',
-      title: '母体科技',
-      description: '与我们一起创造你的专属应用程序',
+      title: '母體科技',
+      description: '與我們壹起創造妳的專屬應用程序',
     },
     '/en/': {
       lang: 'en-US',
