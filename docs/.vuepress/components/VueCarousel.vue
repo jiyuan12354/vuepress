@@ -4,8 +4,6 @@
       class="contain"
       @mouseenter="stop"
       @mouseleave="start"
-      :style="{height: imgHeight + 'px'}"
-      style="width: 100%"
     >
       <ul class="ul">
         <li class="items" v-for="(img, index) in imgs" :key="index" v-show="index == showIndex">
@@ -18,8 +16,7 @@
               :image-source="img.src"
               loading-image="http://temp.im/1920x430/4ca6f4/fff"
               error-image="/icons/presentation.png"
-              image-class="cam-viewport"
-              background-size="cover">
+              image-class="cam-viewport">
             </VueLazyBackgroundImage>
           </ClientOnly>
         </li>
@@ -38,10 +35,10 @@
       </ul>
       <div class="control" v-show="show">
         <span class="left" @click="previous">
-          <img src="https://img.icons8.com/ios-glyphs/30/eeeeee/chevron-left.png">
+
         </span>
         <span class="right" @click="next">
-          <img src="https://img.icons8.com/ios-glyphs/30/eeeeee/chevron-right.png">
+
         </span>
       </div>
     </div>

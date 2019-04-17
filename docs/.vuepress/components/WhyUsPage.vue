@@ -6,6 +6,7 @@
                     <h2>
                         <span class="index">0{{ index + 1 }}/</span>
                         {{ item.title }}
+                        <img :src="$withBase(item.icon)" alt="">
                     </h2>
                     <p v-for="p in item.details">{{ p }}</p>
                 </div>

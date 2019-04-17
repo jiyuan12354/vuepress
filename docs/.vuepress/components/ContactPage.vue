@@ -85,8 +85,8 @@
                       妳的訊息已在處理中。
                       <br>
                       <br>如果就我們的服務有任何疑問，
-                      <br>請電(852) 3952 6488 或發送電郵給我們
-                      <a href="mailto:info@codefreesoft.com">info@codefreesoft.com</a>。
+                      <br>請電(852) 3974 5509 或發送電郵給我們
+                      <a href="mailto:mother.technology.limited@gmail.com">mother.technology.limited@gmail.com</a>。
                       <br>
                       <br>謝謝
                     </div>

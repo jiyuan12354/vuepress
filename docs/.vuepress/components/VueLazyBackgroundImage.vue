@@ -57,7 +57,7 @@ export default {
       }
 
       if (this.imageState === 'loaded') {
-        return 'background-image: url(' + this.asyncImage.src + '); background-size: ' + this.backgroundSize
+        return 'background-image: url(' + this.asyncImage.src + ');'
       }
 
       return '';
