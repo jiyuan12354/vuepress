@@ -45,6 +45,14 @@ module.exports = {
                 '/hangye/community.md'
               ]
             },
+            {
+              title: '科技券计划',
+              collapsable: false,
+              children: [
+                '/hangye/understand.md',
+                '/hangye/application.md'
+              ]
+            },
           ],
         }
       }

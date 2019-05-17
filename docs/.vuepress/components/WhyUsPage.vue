@@ -3,11 +3,11 @@
         <div class="features animated fadeIn">
             <div class="feature fadeIn" v-for="(item, index) in data.features">
                 <div class="title">
-                    <h2>
+                    <h3>
                         <span class="index">0{{ index + 1 }}/</span>
                         {{ item.title }}
                         <img :src="$withBase(item.icon)" alt="">
-                    </h2>
+                    </h3>
                     <p v-for="p in item.details">{{ p }}</p>
                 </div>
                 <div class="icon">
@@ -24,6 +24,10 @@
             return {
             };
         },
+        // mounted(){
+        //     let sidebar=document.querySelector('.sidebar');
+        //     sidebar.style.display="none";
+        // },
         computed: {
             data() {
                 return {

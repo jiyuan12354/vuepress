@@ -18,7 +18,7 @@
                 <p class="description">
                     {{ data.description }}
                 </p>
-                <p class="action"><a href="/guide/" class="nav-link action-button">{{ data.actionText }}</a></p>
+                <p class="action"><a href="/guide/" class="nav-link action-button animated infinite pulse">{{ data.actionText }}</a></p>
             </div>
             <div class="features animated fadeIn">
                 <div class="feature fadeIn service_list" v-for="item in data.features" :key="item.title">
@@ -28,13 +28,13 @@
                             <span>{{item.title}}</span>
                         </li>
                     </a>
-                    <!-- <h2>{{ item.title }}</h2> -->
+                    <!-- <h3>{{ item.title }}</h3> -->
                     <p>{{ item.details }}</p>
                 </div>
             </div>
 
             <div class="intro">
-                <h2>手機應用軟件開發能給企業帶來哪些價值</h2>
+                <h3>手機應用軟件開發能給企業帶來哪些價值</h3>
                 <ul class="value">
                     <li>手機應用軟件開發可以幫助企業實現精準營銷。APP將企業的最新信息，比如公司最近的新產品上市或促銷活動等信息快速精準的傳達給目標客戶。</li>
                     <li>可以通過手機APP隨時隨地傳達信息給客戶，不時間跟空間等原因受阻。</li>
@@ -42,7 +42,7 @@
                     <li>企業用最低的廣告成本，獲得最佳的宣傳效果傳統的廣告方式相比，手機APP廣告無需按點擊和次數付費，其圖文並茂、形象生動的廣告表現形式論是費用還是效果方面都比傳統的廣告更勝壹籌。</li>
                     <li>服務於現有客戶，提升客戶的滿意度，並促成二次消費。</li>
                 </ul>
-                <h2>開發壹個APP需要多少錢</h2>
+                <h3>開發壹個APP需要多少錢</h3>
                 <div class="assess-cost">
                     <div class="desc">
                         要說到開發壹款APP多少錢？這是許多需要制作APP客戶端的企業都會想要知道的問題答案，就APP開發的工作內容來看，APP報價都受到多方面的因素影響，所以相應的蘋果APP的開發價格當然也是受到很多因素影響的。
@@ -78,6 +78,10 @@
         components: {
             "VueCarousel": VueCarousel,
         },
+        // mounted(){
+        //     let sidebar=document.querySelector('.sidebar');
+        //     sidebar.style.display="none";
+        // },
         computed: {
             background() {
                 return this.$site.themeConfig.homeBackgroundUrl

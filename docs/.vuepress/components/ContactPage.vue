@@ -1,7 +1,7 @@
 <template>
   <div class="bodyWrap">
     <div class="topBanner">
-      <h2 class="center mb0">聯絡我們</h2>
+      <h3 class="center mb0">聯絡我們</h3>
     </div>
     <div class="block p40 bg grey contactBlock2">
       <div class="contentWrap">
@@ -123,6 +123,10 @@
         formInValid: true,
       };
     },
+    // mounted() {
+    //   let sidebar = document.querySelector('.sidebar');
+    //   sidebar.style.display = "none";
+    // },
     computed: {
       contact() {
         return {
