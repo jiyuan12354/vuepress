@@ -16,11 +16,13 @@ export default {
     },
     loadingImage: {
       type: String,
-      required: true
+      required: false,
+      default: '#'
     },
     errorImage: {
       type: String,
-      required: true
+      required: false,
+      default: '#'
     },
     imageErrorCallback: {
       type: Function,
@@ -48,19 +50,23 @@ export default {
   },
   computed: {
     computedStyle() {
-      if (this.imageState === 'loading') {
-        return 'background-image: url(' + this.loadingImage + ');'
-      }
+      // if (this.imageState === 'loading') {
+      //   return 'background-image: url(' + this.loadingImage + ');'
+      // }
 
-      if (this.imageState === 'error') {
-        return 'background-image: url(' + this.errorImage + ');'
-      }
+      // if (this.imageState === 'error') {
+      //   return 'background-image: url(' + this.errorImage + ');'
+      // }
 
       if (this.imageState === 'loaded') {
         return 'background-image: url(' + this.asyncImage.src + ');'
       }
 
-      return '';
+      // return '';
+      return `
+      background: rgb(54,67,89);
+      background: linear-gradient(45deg, rgba(54,67,89,0.5) 0%, rgba(54,67,89,1) 100%), url(${this.imageSource}) center;
+      `
     }
   },
   methods: {

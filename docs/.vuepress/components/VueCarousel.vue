@@ -14,8 +14,6 @@
           <ClientOnly>
             <VueLazyBackgroundImage
               :image-source="img.src"
-              loading-image="http://temp.im/1920x430/4ca6f4/fff"
-              error-image="/icons/presentation.png"
               image-class="cam-viewport">
             </VueLazyBackgroundImage>
           </ClientOnly>
