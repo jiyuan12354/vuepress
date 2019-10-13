@@ -1,6 +1,6 @@
 <template>
     <div class="ticket">
-        <div class='title'>母體應您所需，衆望所歸2</div>
+        <div class='title'>母體應您所需，衆望所歸</div>
         <div class="subtitle">聯係我們一切將會改變...</div>
         <a class="action-button animated infinite pulse" href="/request-a-quote/">聯係我們</a>
     </div>

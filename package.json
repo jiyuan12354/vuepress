@@ -22,7 +22,7 @@
     "markdown-it": "^8.4.1",
     "markdown-it-emoji": "^1.4.0",
     "markdown-it-katex": "^2.0.3",
-    "vue-lazy-youtube-video": "^1.0.3",
+    "vue-lazy-youtube-video": "^1.2.2",
     "webpack-serve": "^3.0.0-beta.3"
   }
 }
